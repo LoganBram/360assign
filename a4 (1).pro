@@ -41,40 +41,18 @@ factors_loop( N, Start, Rest) :-
       Next is Start + 1,
       factors_loop( N, Next, Rest).
 
-/*
-  factors(N, Factors): Given an integer N > 1,
-                          return in Factors a list of all F such that
-                              F > 1 and F < N and (N mod F) = 0.
-                       (The list Factors includes non-prime factors.
-                        For example, factors(20, [2, 4, 5, 10]) is true.)
-*/
 factors(N, Factors) :- N > 1, factors_loop( N, 2, Factors).
+
+len([], LenResult):-
+    LenResult is 0.
+
+len([X|Y], LenResult):-
+    len(Y, L),
+    LenResult is L + 1.
 
 /*
   Q1a.
-
-  is_prime(N, Answer)
-
-  Given an integer N >= 2:
-    Answer = prime               iff  N is prime
-    Answer = composite(Factors)  iff  N is not prime, with *prime* factors Factors
-
-  Examples:
-      ?- is_prime(11, Answer).
-    Answer = prime
-    ?- is_prime(20, Answer).
-    Answer = composite([2, 5])    % The factors of 20 are: 2, 4, 5, 10.
-                                  % The *prime* factors of 20 are: 2, 5.
-
-   Replace the word "change_this" in the second rule below.
-   
-   Hint: You should return the *prime* factors (not all of the factors),
-         but it may be useful to first write a version of is_prime
-           that returns all of the factors,
-         complete question Q1b,
-         and then return to this question.
-*/
-
+ */
 is_prime(N, prime) :-
     factors(N, []).
     
@@ -86,29 +64,19 @@ is_prime(N, composite(PrimeFactors)) :-
     
 find_primes([], []).
 
-/*
-  In this rule, we include X in the output: [X | Ys].
-  So this rule should check that X is prime.
-*/
 find_primes([X | Xs], [X | Ys]) :-
-  change_this.
+    X>1,
+    factors(X,Factors),
+    len(Factors, L),
+    L == 0,
+    !,
+    find_primes(Xs,Ys).
 
-/*
-  In this rule, we do not include X in the output: Ys.
-  So this rule should check that X is not prime.
-*/
 find_primes([X | Xs], Ys) :-
-  change_this.
+    find_primes(Xs, Ys).
 
 
-/*
-  upto(X, Y, Zs):
-  Zs is every integer from X to Y
 
-  Example:
-     ?- upto(3, 7, Range)
-     Range = [3, 4, 5, 6, 7]
-*/
 upto(X, X, [X]).
 upto(X, Y, [X | Zs]) :-
     X < Y,
