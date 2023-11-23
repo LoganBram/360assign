@@ -78,6 +78,9 @@ find_primes([X | Xs], Ys) :-
     find_primes(Xs, Ys).
 
 
+
+
+
 /* Q1.c */
 
 primes_list(M, N, Primes) :-
@@ -90,23 +93,6 @@ upto(X, Y, [X | Zs]) :-
     X < Y,
     Xplus1 is X + 1,
     upto(Xplus1, Y, Zs).
-
-/*
-  primes_list(M, N, Primes)
-    Primes = all prime numbers between M and N, in increasing order.
-    Example:
-      ?- primes_list(60, 80, Primes).
-      Primes = [61, 67, 71, 73, 79] .
-
- (Return only one solution.)
-
- Q1c. Replace the word "change_this" in the rule below.
-      HINT: Use upto and find_primes.
-*/
-
-primes_list(M, N, Primes) :-
-   change_this.
-
 
 
 /*
