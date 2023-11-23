@@ -6,7 +6,7 @@
  * Replace  this is a syntax error  with your student ID number:
  */
 student_id( this is a syntax error ).
-% second_student_id(  ).
+% second_student_id( 20298549 ).
 % If in a group, uncomment the second_student_id line
 %   and put the second student's ID between the ( )
 check_that_you_added_your_student_id_above().
