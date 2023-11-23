@@ -95,7 +95,35 @@ upto(X, Y, [X | Zs]) :-
     upto(Xplus1, Y, Zs).
 
 
+<<<<<<< HEAD
 /* Q2 */
+=======
+/*
+ * Q2. Translate the spiral function from Assignment 1:
+ *
+  `spiral': given two integers `dir' and `span',
+  returns 1 if `dir' is less than or equal to 0,
+  and otherwise returns (span - dir) * spiral (span - dir) (span - 4).
+
+  Here is a Haskell solution:
+  
+    spiral :: Integer -> Integer -> Integer
+    spiral dir span = if dir <= 0 then 1
+                      else (span - dir) * spiral (span - dir) (span - 4)
+
+  Write a Prolog predicate
+
+    spiral
+
+  such that  spiral(Dir, Span, R) is true  iff  R = (spiral Dir Span)
+                                                (in Haskell)
+
+  Hint: It may be useful to rewrite 'spiral' using 'let' and/or 'where'.
+
+  We have written one clause, corresponding to the "then" part of
+  the Haskell function, for you.
+*/
+>>>>>>> 88ccbc32c88c0dfe210727f32ec1340ca3923a3e
 
 spiral(Dir, _, 1) :- Dir =< 0.
 
