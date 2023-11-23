@@ -11,22 +11,6 @@ second_student_id( 20298549 ).
 %   and put the second student's ID between the ( )
 check_that_you_added_your_student_id_above().
 
-
-/*
- * Q1: Prime numbers
- */
-
-/*
-  factors_loop(N, Start, Factors):
-      Given integers N > 1 and Start > 1,
-          return in Factors a list of all F such that
-                 (F >= Start)
-             and F < N
-             and (N mod F) = 0.
-
-  This predicate is already used within `factors`.
-  You probably don't need to call `factors_loop` yourself.
-*/
 factors_loop( N, Start, []) :- N > 1, Start > 1, Start >= N.
 
 factors_loop( N, Start, [Start | Rest]) :-
@@ -41,6 +25,7 @@ factors_loop( N, Start, Rest) :-
       Next is Start + 1,
       factors_loop( N, Next, Rest).
 
+
 factors(N, Factors) :- N > 1, factors_loop( N, 2, Factors).
 
 len([], LenResult):-
@@ -50,22 +35,21 @@ len([X|Y], LenResult):-
     len(Y, L),
     LenResult is L + 1.
 
-/*
-  Q1a.
- */
+
+/*Q1.a*/
 is_prime(N, prime) :-
     factors(N, []).
     
 is_prime(N, composite(PrimeFactors)) :-
     factors(N,Factors),
-    Factors \= []
+    Factors \= [],
     find_primes(Factors, Primes),
     PrimeFactors = Primes.
-    
 
- /* Q1.B */   
+
+
+/* Q1.b */
 find_primes([], []).
-
 find_primes([X | Xs], [X | Ys]) :-
     X>1,
     factors(X,Factors),
@@ -76,17 +60,16 @@ find_primes([X | Xs], [X | Ys]) :-
 
 find_primes([X | Xs], Ys) :-
     find_primes(Xs, Ys).
+    
 
 
-
-
-
-/* Q1.c */
-
+/*Q1.c*/
 primes_list(M, N, Primes) :-
-  upto(M,N,Range),
-  find_primes(Range, PrimeFactors),
-  Primes = PrimeFactors.
+   upto(M,N,Range),
+   find_primes(Range, PrimeFactors),
+   Primes = PrimeFactors. 
+
+
 
 upto(X, X, [X]).
 upto(X, Y, [X | Zs]) :-
@@ -94,10 +77,8 @@ upto(X, Y, [X | Zs]) :-
     Xplus1 is X + 1,
     upto(Xplus1, Y, Zs).
 
-
-/* Q2 */
+/*Q2*/
 spiral(Dir, _, 1) :- Dir =< 0.
-
 
 spiral(Dir, Span, R) :-
     Dir > 0,
@@ -106,12 +87,7 @@ spiral(Dir, Span, R) :-
     spiral(NextDir, NextSpan, R2),
     R is (Span - Dir) * R2.
 
-/*
-  Q3: Trees
-*/
-
-<<<<<<< HEAD
- */
+/*Q3*/
 atlevel(0, node(Key, _, _), Key).
 atlevel(0, leaf(Key), Key).
 atlevel(Level, node(_, Left, Right), Key) :-
@@ -120,7 +96,3 @@ atlevel(Level, node(_, Left, Right), Key) :-
     (   atlevel(NextLevel, Left, Key);
         atlevel(NextLevel, Right, Key)
     ).
-=======
-atlevel(0, node(Key, _, _), Key).
-atlevel(0, leaf(Key), Key).
->>>>>>> d919ad9f09396fff3a2623f1ce58e38b372fcd78
