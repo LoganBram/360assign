@@ -5,8 +5,8 @@
 /*
  * Replace  this is a syntax error  with your student ID number:
  */
-student_id( this is a syntax error ).
-% second_student_id( 20298549 ).
+student_id( 20244382 ).
+second_student_id( 20298549 ).
 % If in a group, uncomment the second_student_id line
 %   and put the second student's ID between the ( )
 check_that_you_added_your_student_id_above().
@@ -62,6 +62,8 @@ is_prime(N, composite(PrimeFactors)) :-
     find_primes(Factors, Primes),
     PrimeFactors = Primes.
     
+
+ /* Q1.B */   
 find_primes([], []).
 
 find_primes([X | Xs], [X | Ys]) :-
@@ -76,6 +78,12 @@ find_primes([X | Xs], Ys) :-
     find_primes(Xs, Ys).
 
 
+/* Q1.c */
+
+primes_list(M, N, Primes) :-
+  upto(M,N,Range),
+  find_primes(Range, PrimeFactors),
+  Primes = PrimeFactors.
 
 upto(X, X, [X]).
 upto(X, Y, [X | Zs]) :-
