@@ -95,35 +95,7 @@ upto(X, Y, [X | Zs]) :-
     upto(Xplus1, Y, Zs).
 
 
-<<<<<<< HEAD
 /* Q2 */
-=======
-/*
- * Q2. Translate the spiral function from Assignment 1:
- *
-  `spiral': given two integers `dir' and `span',
-  returns 1 if `dir' is less than or equal to 0,
-  and otherwise returns (span - dir) * spiral (span - dir) (span - 4).
-
-  Here is a Haskell solution:
-  
-    spiral :: Integer -> Integer -> Integer
-    spiral dir span = if dir <= 0 then 1
-                      else (span - dir) * spiral (span - dir) (span - 4)
-
-  Write a Prolog predicate
-
-    spiral
-
-  such that  spiral(Dir, Span, R) is true  iff  R = (spiral Dir Span)
-                                                (in Haskell)
-
-  Hint: It may be useful to rewrite 'spiral' using 'let' and/or 'where'.
-
-  We have written one clause, corresponding to the "then" part of
-  the Haskell function, for you.
-*/
->>>>>>> 88ccbc32c88c0dfe210727f32ec1340ca3923a3e
 
 spiral(Dir, _, 1) :- Dir =< 0.
 
@@ -140,75 +112,5 @@ spiral(Dir, Span, R) :-
 /*
   Q3: Trees
 
-  Consider the tree     (We are *not* representing
-                          trees with Empty "leaves":
-             4                         4
-            / \                      /   \
-           2   5                   2       5
-          / \                    /  \     / \
-         1   3                 1     3   E   E
-                              / \   / \
-                          Empty  E E   E            )
-                 
-  We will express the above tree in Prolog as
-
-    node( 4, node( 2, leaf(1), leaf(3)), leaf(5))
-  
-  This kind of tree is similar to this Haskell type:
-  
-    data A4Tree = Node Integer A4Tree A4Tree
-                | Leaf Integer
-
-  In this question, a  key at level L  is a key that appears at level L of the tree,
-  counting the root as level 0, the root's children as level 1, and so on.
-
-  For example, in the tree
-
-                         4          Level 0
-                        / \      
-                       2   5        Level 1
-                      / \        
-                     1   3          Level 2
-
-  the key 4 is at level 0, the keys 2 and 5 are at level 1, and the keys 1 and 3 are at level 2.
-
-  In this question, define a Prolog predicate
-
-    atlevel(L, T, K)
-
-  that is true iff key K appears at level L of tree T.
-
-  For example:
-  
-    ?- atlevel( 0, node(2, leaf(1), leaf(3)), 2).
-    true
-
-    ?- atlevel( 1, node( 4, node( 2, leaf(1), leaf(3)), leaf(5)), 5).
-    true
-
-  Your predicate should be written so that when the first argument is a specific integer
-  (like 0, 1, etc.), the second argument is a specific tree (containing no variables),
-  and the third argument is a variable,
-  typing ; returns *all* keys at that level in the tree.
-  For example:
-
-    ?- atlevel( 1, node( 4, node( 2, leaf(1), leaf(3)), leaf(5)), Key).
-    Key = 2 ;
-    Key = 5 ;
-    false
-
-    (Also acceptable:
-    ?- atlevel( 1, node( 4, node( 2, leaf(1), leaf(3)), leaf(5)), Key).
-    Key = 2 ;
-    Key = 5. )
-
-  If the level "goes below" the tree, atlevel should be false.
-  For example, the tree  leaf(1000)  has only level 0:
-
-    ?- atlevel( 1, leaf(1000), K).
-    false
-
-  Define clauses for 'atlevel' below.
-*/
-
+ */
 
