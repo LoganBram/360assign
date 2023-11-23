@@ -113,4 +113,11 @@ spiral(Dir, Span, R) :-
   Q3: Trees
 
  */
-
+atlevel(0, node(Key, _, _), Key).
+atlevel(0, leaf(Key), Key).
+atlevel(Level, node(_, Left, Right), Key) :-
+    Level > 0,
+    NextLevel is Level - 1,
+    (   atlevel(NextLevel, Left, Key);
+        atlevel(NextLevel, Right, Key)
+    ).
