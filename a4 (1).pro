@@ -96,8 +96,8 @@ upto(X, Y, [X | Zs]) :-
 
 
 /* Q2 */
-
 spiral(Dir, _, 1) :- Dir =< 0.
+
 
 spiral(Dir, Span, R) :-
     Dir > 0,
@@ -106,12 +106,11 @@ spiral(Dir, Span, R) :-
     spiral(NextDir, NextSpan, R2),
     R is (Span - Dir) * R2.
 
-
-
-
 /*
   Q3: Trees
+*/
 
+<<<<<<< HEAD
  */
 atlevel(0, node(Key, _, _), Key).
 atlevel(0, leaf(Key), Key).
@@ -121,3 +120,7 @@ atlevel(Level, node(_, Left, Right), Key) :-
     (   atlevel(NextLevel, Left, Key);
         atlevel(NextLevel, Right, Key)
     ).
+=======
+atlevel(0, node(Key, _, _), Key).
+atlevel(0, leaf(Key), Key).
+>>>>>>> d919ad9f09396fff3a2623f1ce58e38b372fcd78
